@@ -9,12 +9,9 @@ import (
 )
 
 func main() {
-	base := os.Getenv("ORY_PROJECT_URL")
-	key := os.Getenv("ORY_API_KEY")
-
 	cfg := ory.NewConfiguration()
-	cfg.Servers = ory.ServerConfigurations{{URL: base}}
-	cfg.AddDefaultHeader("Authorization", "Bearer "+key)
+	cfg.Servers = ory.ServerConfigurations{{URL: os.Getenv("ORY_PROJECT_URL")}}
+	cfg.AddDefaultHeader("Authorization", "Bearer "+os.Getenv("ORY_API_KEY"))
 
 	c := ory.NewAPIClient(cfg)
 	ids, _, err := c.IdentityAPI.ListIdentities(context.Background()).PerPage(1).Execute()
@@ -26,14 +23,13 @@ func main() {
 		return
 	}
 
-	id := ids[0].Id
 	uname := ""
 	if m, ok := ids[0].Traits.(map[string]any); ok {
-		if v, ok := m["username"].(string); ok {
-			uname = v
-		} else if v, ok := m["email"].(string); ok {
-			uname = v
+		if s, ok := m["username"].(string); ok && s != "" {
+			uname = s
+		} else if s, ok := m["email"].(string); ok {
+			uname = s
 		}
 	}
-	fmt.Printf("%s %s\n", id, uname)
+	fmt.Printf("%s %s\n", ids[0].Id, uname)
 }

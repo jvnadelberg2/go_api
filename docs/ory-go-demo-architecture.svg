@@ -1,1 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300"><rect x="20" y="40" width="220" height="80" rx="12" ry="12" stroke="black" fill="none"/><text x="130" y="85" font-size="16" text-anchor="middle">Browser / Client</text><rect x="340" y="40" width="220" height="80" rx="12" ry="12" stroke="black" fill="none"/><text x="450" y="70" font-size="16" text-anchor="middle">ory-go-demo</text><text x="450" y="95" font-size="12" text-anchor="middle">net/http + session check</text><rect x="660" y="40" width="220" height="80" rx="12" ry="12" stroke="black" fill="none"/><text x="770" y="70" font-size="16" text-anchor="middle">Ory Frontend API</text><text x="770" y="95" font-size="12" text-anchor="middle">/sessions (Kratos)</text><line x1="240" y1="80" x2="340" y2="80" stroke="black" marker-end="url(#a)"/><line x1="560" y1="80" x2="660" y2="80" stroke="black" marker-end="url(#a)"/><defs><marker id="a" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="black"/></marker></defs><rect x="340" y="180" width="220" height="80" rx="12" ry="12" stroke="black" fill="none"/><text x="450" y="210" font-size="16" text-anchor="middle">Login Redirect</text><text x="450" y="235" font-size="12" text-anchor="middle">/ui/login</text><line x1="450" y1="120" x2="450" y2="180" stroke="black" marker-end="url(#a)"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="100%" height="auto" viewBox="0 0 1500 420" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="ah-teal" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#14b8a6"/>
+    </marker>
+    <style>
+      .title { font: 700 24px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+               fill:#000; }
+      .text  { font: 18px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+               fill:#000; }
+      .note  { font: 16px ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+               fill:#000; }
+      .box   { fill:#fff; stroke:#000; stroke-width:1.8; rx:14; }
+      .teal  { stroke:#14b8a6; stroke-width:3; fill:none; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text class="title" x="750" y="50" text-anchor="middle">Go Admin API · ListIdentities flow</text>
+
+  <!-- Left box -->
+  <rect class="box" x="100" y="100" width="420" height="200"/>
+  <text class="text" x="310" y="160" text-anchor="middle">Go CLI (main.go)</text>
+  <text class="text" x="310" y="190" text-anchor="middle">Ory Go SDK</text>
+  <text class="note" x="310" y="230" text-anchor="middle">Env: ORY_PROJECT_URL, ORY_API_KEY</text>
+
+  <!-- Right box (moved further right) -->
+  <rect class="box" x="950" y="100" width="420" height="200"/>
+  <text class="text" x="1160" y="180" text-anchor="middle">Ory Cloud</text>
+  <text class="text" x="1160" y="210" text-anchor="middle">Identity API (/identities)</text>
+
+  <!-- Request (top) -->
+  <path class="teal" d="M520,150 C700,150 900,150 950,150" marker-end="url(#ah-teal)"/>
+  <text class="text" x="735" y="130" text-anchor="middle">GET /identities?per_page=1</text>
+
+  <!-- Response (bottom) -->
+  <path class="teal" d="M950,250 C900,250 700,250 520,250" marker-end="url(#ah-teal)"/>
+  <text class="text" x="735" y="280" text-anchor="middle">200 JSON [ { id, traits{username|email} } ]</text>
+
+  <!-- Output note -->
+  <text class="note" x="310" y="340" text-anchor="middle">stdout → “&lt;uuid&gt; &lt;username-or-email&gt;” or “0”</text>
+</svg>
