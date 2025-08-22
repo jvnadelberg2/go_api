@@ -33,8 +33,7 @@ Set environment variables:
 
 Run the demo:
 
-    go mod tidy
-    go run main.go
+    ./run.sh
 
 ---
 
